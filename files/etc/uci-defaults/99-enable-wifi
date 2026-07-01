@@ -1,7 +1,15 @@
 #!/bin/sh
+
+# 开启三个频段的 Wi-Fi
 uci set wireless.radio0.disabled='0'
 uci set wireless.radio1.disabled='0'
 uci set wireless.radio2.disabled='0'
+
+# 强制将国家代码设置为 US，利用源码自带的解禁法规开启 6GHz
+uci set wireless.radio0.country='US'
+uci set wireless.radio1.country='US'
+uci set wireless.radio2.country='US'
+
 uci commit wireless
 wifi reload
 exit 0
